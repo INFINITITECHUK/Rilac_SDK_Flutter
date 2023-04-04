@@ -10,3 +10,4 @@ String myPointURL = "${baseURL}point/v1/mypoint";
 String getVoucherListURL = "${baseURL}voucher/v1/list";
 String getVoucherDetailsURL = "${baseURL}voucher/v1/details";
 String getPurchaseVoucherURL = "${baseURL}voucher-purchase/v1/purchase";
+String getPurchaseVoucherListURL = "${baseURL}voucher-purchase/v1/purchase-list";

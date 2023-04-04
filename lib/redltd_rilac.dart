@@ -84,8 +84,13 @@ class RedltdRilac extends Functions{
   }
 
   @override
-  Future purchaseVoucher({required String voucherId, required bool purchaseByCash, String transactionId = "", String accountId = "", String transactionDatetime = "", num amount = 0.0}) {
+  Future<dynamic> purchaseVoucher({required String voucherId, required bool purchaseByCash, String transactionId = "", String accountId = "", String transactionDatetime = "", num amount = 0.0}) {
     return _repository.purchaseVoucher(voucherId: voucherId, purchaseByCash: purchaseByCash, transactionId: transactionId, accountId: accountId, amount: amount);
+  }
+
+  @override
+  Future<dynamic> getPurchaseVoucherList({String merchantId = "", int page = 1, int limit = 20}) {
+    return _repository.getPurchaseVoucherList(merchantId: merchantId, page: page, limit: limit);
   }
 
 

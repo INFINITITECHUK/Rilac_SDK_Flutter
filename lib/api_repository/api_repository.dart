@@ -146,4 +146,36 @@ class Repository{
     }
   }
 
+  Future<dynamic> getPurchaseVoucherList({String merchantId = "", int page = 1, int limit = 20}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      Map<String, dynamic>? queryParameters;
+      if(merchantId.isNotEmpty){
+        queryParameters = {
+          "merchantid" : merchantId,
+          "page" : page,
+          "limit" : limit
+        };
+      }else{
+        queryParameters = {
+          "page" : page,
+          "limit" : limit
+        };
+      }
+
+
+      Response response = await _dio.get(getPurchaseVoucherListURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      return await response.data;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioError);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => getPurchaseVoucherList(merchantId: merchantId, page: page, limit: limit));
+      }else{
+        return e;
+      }
+    }
+  }
 }

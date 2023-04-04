@@ -83,6 +83,18 @@ class _MyAppState extends State<MyApp> {
               },
             ),
           ),
+
+          const SizedBox(height: 10,),
+
+          Center(
+            child: ElevatedButton(
+              child: const Text('Get purchase voucher List'),
+              onPressed: () async{
+                var data = await RedltdRilac().getPurchaseVoucherList();
+                debugPrint(data.toString());
+              },
+            ),
+          ),
         ],
       ),
     );

@@ -11,6 +11,8 @@ abstract class Functions{
   Future<dynamic> getVoucherDetails({required String voucherId});
 
   Future<dynamic> purchaseVoucher({required String voucherId, required bool purchaseByCash, String transactionId = "", String accountId = "", String transactionDatetime = "", num amount = 0.0});
+
+  Future<dynamic> getPurchaseVoucherList({String merchantId = "", int page = 0, int limit = 0});
 }
 
 
