@@ -93,5 +93,10 @@ class RedltdRilac extends Functions{
     return _repository.getPurchaseVoucherList(merchantId: merchantId, page: page, limit: limit);
   }
 
+  @override
+  Future<dynamic> getPurchaseVoucherDetails({required String voucherCode}) {
+    return _repository.getPurchaseVoucherDetails(voucherCode: voucherCode);
+  }
+
 
 }

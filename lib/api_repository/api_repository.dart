@@ -119,7 +119,7 @@ class Repository{
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
-        return DioExceptions.unauthorized(() => getMyPoint());
+        return DioExceptions.unauthorized(() => getVoucherDetails(voucherId: voucherId));
       }else{
         return e;
       }
@@ -173,6 +173,28 @@ class Repository{
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getPurchaseVoucherList(merchantId: merchantId, page: page, limit: limit));
+      }else{
+        return e;
+      }
+    }
+  }
+
+  Future<dynamic> getPurchaseVoucherDetails({required String voucherCode}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      Map<String, dynamic>? queryParameters = {
+        "voucher_code" : voucherCode
+      };
+
+      Response response = await _dio.get(getPurchaseVoucherDetailsURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      return await response.data;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioError);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => getPurchaseVoucherDetails(voucherCode: voucherCode));
       }else{
         return e;
       }
