@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:redltd_rilac/api_repository/model/VoucherUserBodyModel.dart';
 import '../api_services/DioExceptions.dart';
 import '../api_services/api_service.dart';
 import '../global/global_cache.dart';
@@ -61,7 +62,7 @@ class Repository{
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getMyPoint());
       }else{
-        return e;
+        return e.response;
       }
     }
   }
@@ -98,7 +99,7 @@ class Repository{
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getVoucherList(longitude: latitude, latitude: latitude, page: page, limit: limit, merchantId: merchantId));
       }else{
-        return e;
+        return e.response;
       }
     }
   }
@@ -121,7 +122,7 @@ class Repository{
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getVoucherDetails(voucherId: voucherId));
       }else{
-        return e;
+        return e.response;
       }
     }
   }
@@ -141,7 +142,7 @@ class Repository{
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => purchaseVoucher(voucherId: voucherId, purchaseByCash: purchaseByCash, transactionId: transactionId, accountId: accountId, transactionDatetime: transactionDatetime, amount: amount));
       }else{
-        return e;
+        return e.response;
       }
     }
   }
@@ -174,7 +175,7 @@ class Repository{
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getPurchaseVoucherList(merchantId: merchantId, page: page, limit: limit));
       }else{
-        return e;
+        return e.response;
       }
     }
   }
@@ -196,7 +197,27 @@ class Repository{
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getPurchaseVoucherDetails(voucherCode: voucherCode));
       }else{
-        return e;
+        return e.response;
+      }
+    }
+  }
+
+  Future<dynamic> voucherUse({required String voucherCode}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      VoucherUserBodyModel body = VoucherUserBodyModel(voucherCode: voucherCode);
+
+      Response response = await _dio.post(voucherUseURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      return await response.data;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioError);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => voucherUse(voucherCode: voucherCode));
+      }else{
+        return e.response;
       }
     }
   }

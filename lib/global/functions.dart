@@ -15,6 +15,8 @@ abstract class Functions{
   Future<dynamic> getPurchaseVoucherList({String merchantId = "", int page = 0, int limit = 0});
 
   Future<dynamic> getPurchaseVoucherDetails({required String voucherCode});
+
+  Future<dynamic> voucherUse({required String voucherCode});
 }
 
 
