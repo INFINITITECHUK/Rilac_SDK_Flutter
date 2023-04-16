@@ -16,7 +16,13 @@ abstract class Functions{
 
   Future<dynamic> getPurchaseVoucherDetails({required String voucherCode});
 
-  Future<dynamic> voucherUse({required String voucherCode});
+  Future<dynamic> useVoucher({required String voucherCode});
+
+  Future<dynamic> shareVoucher({required String voucherCode, required String sendToMobileNumber});
+
+  Future<dynamic> sharePoints({String businessId = "", String sendToMobileNumber = "", required String keyword, required num transferAmount});
+
+  Future<dynamic> pointExpenseHistory({int limit = 0, int page = 0});
 }
 
 

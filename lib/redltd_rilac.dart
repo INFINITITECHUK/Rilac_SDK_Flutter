@@ -99,8 +99,23 @@ class RedltdRilac extends Functions{
   }
 
   @override
-  Future<dynamic> voucherUse({required String voucherCode}) {
-    return _repository.voucherUse(voucherCode: voucherCode);
+  Future<dynamic> useVoucher({required String voucherCode}) {
+    return _repository.useVoucher(voucherCode: voucherCode);
+  }
+
+  @override
+  Future<dynamic> shareVoucher({required String voucherCode, required String sendToMobileNumber}) {
+    return _repository.shareVoucher(voucherCode: voucherCode, sendToMobileNumber: sendToMobileNumber);
+  }
+
+  @override
+  Future<dynamic> sharePoints({String businessId = "", String sendToMobileNumber = "", required String keyword, required num transferAmount}) {
+    return _repository.sharePoints(businessId: businessId, sendToMobileNumber: sendToMobileNumber, keyword: keyword, transferAmount: transferAmount);
+  }
+
+  @override
+  Future pointExpenseHistory({int limit = 20, int page = 1}) {
+    return _repository.pointExpenseHistory(limit: limit, page: page);
   }
 
 

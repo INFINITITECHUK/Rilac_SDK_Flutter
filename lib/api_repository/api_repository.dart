@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:redltd_rilac/api_repository/model/SharePointBodyModel.dart';
 import 'package:redltd_rilac/api_repository/model/VoucherUserBodyModel.dart';
 import '../api_services/DioExceptions.dart';
 import '../api_services/api_service.dart';
@@ -8,6 +11,7 @@ import '../global/shared_preference.dart';
 import 'model/LoginBodyModel.dart';
 import 'model/PurchaseVoucherBodyModel.dart';
 import 'model/RefreshTokenBodyModel.dart';
+import 'model/ShareVoucherBodyModel.dart';
 import 'model/UserInfoResponseModel.dart';
 
 class Repository{
@@ -202,7 +206,7 @@ class Repository{
     }
   }
 
-  Future<dynamic> voucherUse({required String voucherCode}) async {
+  Future<dynamic> useVoucher({required String voucherCode}) async {
     try{
       var module = await SharedPrefs.getModule();
       var accessToken = await SharedPrefs.getAccessToken();
@@ -210,12 +214,76 @@ class Repository{
 
       VoucherUserBodyModel body = VoucherUserBodyModel(voucherCode: voucherCode);
 
-      Response response = await _dio.post(voucherUseURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      Response response = await _dio.post(useVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return await response.data;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
-        return DioExceptions.unauthorized(() => voucherUse(voucherCode: voucherCode));
+        return DioExceptions.unauthorized(() => useVoucher(voucherCode: voucherCode));
+      }else{
+        return e.response;
+      }
+    }
+  }
+
+  Future<dynamic> shareVoucher({required String voucherCode, required String sendToMobileNumber}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      ShareVoucherBodyModel body = ShareVoucherBodyModel(voucherCode: voucherCode, toMobileNo: sendToMobileNumber);
+
+      Response response = await _dio.post(shareVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      return await response.data;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioError);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => shareVoucher(voucherCode: voucherCode, sendToMobileNumber: sendToMobileNumber));
+      }else{
+        return e.response;
+      }
+    }
+  }
+
+  Future<dynamic> sharePoints({String businessId = "", String sendToMobileNumber = "", required String keyword, required num transferAmount}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      SharePointBodyModel body = SharePointBodyModel(bussinessId: businessId, toMobileNo: sendToMobileNumber, keyword: keyword, transferAmount: transferAmount);
+
+      Response response = await _dio.post(sharePointURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      return await response.data;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioError);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => sharePoints(businessId: businessId, sendToMobileNumber: sendToMobileNumber, keyword: keyword, transferAmount: transferAmount));
+      }else{
+        return e.response;
+      }
+    }
+  }
+
+
+  Future<dynamic> pointExpenseHistory({int limit = 20, int page = 1}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      Map<String, dynamic>? queryParameters = {
+        "page" : page,
+        "limit" : limit
+      };
+
+      Response response = await _dio.get(pointExpenseHistoryURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      return await response.data;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioError);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => pointExpenseHistory(limit: limit, page: page));
       }else{
         return e.response;
       }

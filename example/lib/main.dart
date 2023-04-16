@@ -112,9 +112,47 @@ class _MyAppState extends State<MyApp> {
 
           Center(
             child: ElevatedButton(
-              child: const Text('Voucher Use'),
+              child: const Text('Use voucher'),
               onPressed: () async{
-                var data = await RedltdRilac().voucherUse(voucherCode: "VP-0019");
+                var data = await RedltdRilac().useVoucher(voucherCode: "VP-0019");
+                debugPrint(data.toString());
+              },
+            ),
+          ),
+
+          const SizedBox(height: 10,),
+
+          Center(
+            child: ElevatedButton(
+              child: const Text('Share voucher'),
+              onPressed: () async{
+                var data = await RedltdRilac().shareVoucher(voucherCode: "VP-0018", sendToMobileNumber: "1234567890");
+                debugPrint(data.toString());
+              },
+            ),
+          ),
+
+          const SizedBox(height: 10,),
+
+          Center(
+            child: ElevatedButton(
+              child: const Text('Share Points'),
+              onPressed: () async{
+                var data = await RedltdRilac().sharePoints(sendToMobileNumber: "01234567890", keyword: "C2CP", transferAmount: 1);
+                debugPrint(data.toString());
+                data = await RedltdRilac().sharePoints(businessId: "1677495583539", keyword: "C2MP", transferAmount: 1);
+                debugPrint(data.toString());
+              },
+            ),
+          ),
+
+          const SizedBox(height: 10,),
+
+          Center(
+            child: ElevatedButton(
+              child: const Text('Point Expense History'),
+              onPressed: () async{
+                var data = await RedltdRilac().pointExpenseHistory(limit: 100, page: 1);
                 debugPrint(data.toString());
               },
             ),

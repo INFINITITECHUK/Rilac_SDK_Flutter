@@ -25,7 +25,7 @@ class SharedPrefs {
 
   static Future<String> getBaseURL() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    return pref.getString("rilac_baseURL") ?? globalBaseURL;
+    return pref.getString("rilac_baseURL") ?? "";
   }
   String get baseURL => _sharedPrefs?.getString("rilac_baseURL") ?? globalBaseURL;
 
