@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:redltd_rilac/api_repository/model/SharePointBodyModel.dart';
@@ -284,6 +282,29 @@ class Repository{
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => pointExpenseHistory(limit: limit, page: page));
+      }else{
+        return e.response;
+      }
+    }
+  }
+
+  Future<dynamic> pointEarnHistory({int limit = 20, int page = 1}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      Map<String, dynamic>? queryParameters = {
+        "page" : page,
+        "limit" : limit
+      };
+
+      Response response = await _dio.get(pointEarnHistoryURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
+      return await response.data;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioError);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => pointEarnHistory(limit: limit, page: page));
       }else{
         return e.response;
       }

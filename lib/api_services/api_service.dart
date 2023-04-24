@@ -16,3 +16,4 @@ String useVoucherURL = "${baseURL}voucher-use/v1/use";
 String shareVoucherURL = "${baseURL}voucher/v1/share";
 String sharePointURL = "${baseURL}point/v1/pointTransfer";
 String pointExpenseHistoryURL = "${baseURL}point/v1/point-expence-history";
+String pointEarnHistoryURL = "${baseURL}point/v1/point-earn-history";
