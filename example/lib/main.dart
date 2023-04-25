@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -43,7 +45,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Get my point'),
               onPressed: () async{
                 var data = await RedltdRilac().getMyPoint();
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -55,7 +62,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Get voucher list'),
               onPressed: () async{
                 var data = await RedltdRilac().getVoucherList(longitude: "1", latitude: "1");
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -67,7 +79,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Get voucher details'),
               onPressed: () async{
                 var data = await RedltdRilac().getVoucherDetails(voucherId: "PD00205");
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -79,7 +96,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Purchase voucher'),
               onPressed: () async{
                 var data = await RedltdRilac().purchaseVoucher(voucherId: "PD00203", purchaseByCash: false);
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -91,7 +113,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Get purchase voucher List'),
               onPressed: () async{
                 var data = await RedltdRilac().getPurchaseVoucherList();
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -103,7 +130,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Get purchase voucher details'),
               onPressed: () async{
                 var data = await RedltdRilac().getPurchaseVoucherDetails(voucherCode: "VP-0019");
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -115,7 +147,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Use voucher'),
               onPressed: () async{
                 var data = await RedltdRilac().useVoucher(voucherCode: "VP-0019");
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -127,7 +164,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Share voucher'),
               onPressed: () async{
                 var data = await RedltdRilac().giftVoucher(voucherCode: "VP-0018", sendToMobileNumber: "1234567890");
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -139,9 +181,19 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Share Points'),
               onPressed: () async{
                 var data = await RedltdRilac().transferPoints(sendToMobileNumber: "01234567890", keyword: "C2CP", transferAmount: 1);
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
                 data = await RedltdRilac().transferPoints(businessId: "1677495583539", keyword: "C2MP", transferAmount: 1);
-                debugPrint(data.toString());
+                jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -153,7 +205,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Point Expense History'),
               onPressed: () async{
                 var data = await RedltdRilac().pointExpenseHistory(limit: 100, page: 1);
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),
@@ -165,7 +222,12 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Point Earn History'),
               onPressed: () async{
                 var data = await RedltdRilac().pointEarnHistory(limit: 100, page: 1);
-                debugPrint(data.toString());
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
               },
             ),
           ),

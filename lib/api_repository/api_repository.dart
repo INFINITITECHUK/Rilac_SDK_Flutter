@@ -58,7 +58,7 @@ class Repository{
       module = module.isEmpty ? globalModule : module;
 
       Response response = await _dio.get(myPointURL, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -95,7 +95,7 @@ class Repository{
       }
 
       Response response = await _dio.get(getVoucherListURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -118,7 +118,7 @@ class Repository{
       };
 
       Response response = await _dio.get(getVoucherDetailsURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -138,7 +138,7 @@ class Repository{
       PurchaseVoucherBodyModel body = PurchaseVoucherBodyModel(voucherid: voucherId, purchaseByCash: purchaseByCash, transectionid: transactionId, accountid: accountId, transectionDatetime: transactionDatetime, amount: amount);
 
       Response response = await _dio.post(getPurchaseVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -171,7 +171,7 @@ class Repository{
 
 
       Response response = await _dio.get(getPurchaseVoucherListURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -193,7 +193,7 @@ class Repository{
       };
 
       Response response = await _dio.get(getPurchaseVoucherDetailsURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -213,7 +213,7 @@ class Repository{
       VoucherUserBodyModel body = VoucherUserBodyModel(voucherCode: voucherCode);
 
       Response response = await _dio.post(useVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -233,7 +233,7 @@ class Repository{
       ShareVoucherBodyModel body = ShareVoucherBodyModel(voucherCode: voucherCode, toMobileNo: sendToMobileNumber);
 
       Response response = await _dio.post(shareVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -253,7 +253,7 @@ class Repository{
       SharePointBodyModel body = SharePointBodyModel(bussinessId: businessId, toMobileNo: sendToMobileNumber, keyword: keyword, transferAmount: transferAmount);
 
       Response response = await _dio.post(sharePointURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -277,7 +277,7 @@ class Repository{
       };
 
       Response response = await _dio.get(pointExpenseHistoryURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
@@ -300,7 +300,7 @@ class Repository{
       };
 
       Response response = await _dio.get(pointEarnHistoryURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
-      return await response.data;
+      return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioError);
       if(e.response?.statusCode! == 401){
