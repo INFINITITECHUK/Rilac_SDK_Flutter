@@ -74,9 +74,15 @@ class RedltdRilac extends Functions{
 
   final Repository _repository = Repository();
 
+
+
   @override
   Future<String> getProjectInfo() async {
-    return "";
+    var deviceId = await SharedPrefs.getDeviceId();
+    var deviceBrand = await SharedPrefs.getDeviceBrand();
+    var deviceOS = await SharedPrefs.getDeviceOS();
+    var deviceModel = await SharedPrefs.getDeviceModel();
+    return "deviceId:$deviceId, deviceBrand:$deviceBrand, deviceOS:$deviceOS, deviceModel:$deviceModel";
   }
 
 // This method uses async/await to return a Future<dynamic> that retrieves

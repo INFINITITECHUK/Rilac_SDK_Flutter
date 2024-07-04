@@ -3,6 +3,7 @@ description: A Flutter plugin for the Rilac SDK.(https://redtechnologies.tech/).
 version: 0.0.5
 homepage: https://github.com/INFINITITECHUK/Rilac_SDK_Flutter
 
+
 environment:
   sdk: '>=2.19.3 <4.0.0'
   flutter: ">=2.5.0"
@@ -14,6 +15,7 @@ dependencies:
   shared_preferences: any
   dio: any
   device_info_plus: any
+
 
 dev_dependencies:
   flutter_test:
