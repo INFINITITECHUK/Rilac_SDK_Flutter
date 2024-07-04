@@ -25,7 +25,7 @@ class Repository{
         SharedPrefs.saveTokens(accessToken: userInfoResponseModel.payload?.accessToken ?? "", refreshToken: userInfoResponseModel.payload?.refreshToken ?? "");
       }
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError).toString();
+      DioExceptions.fromDioError(dioError: e as DioException).toString();
       var response = e.response?.data;
       debugPrint("Plugin login response-> ${response == null ? e.message : response.toString()}");
     }
@@ -44,7 +44,7 @@ class Repository{
         return await callback();
       }
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError).toString();
+      DioExceptions.fromDioError(dioError: e as DioException).toString();
       var response = e.response?.data;
       debugPrint("Plugin refreshToken-> ${response == null ? e.message : response.toString()}");
     }
@@ -60,7 +60,7 @@ class Repository{
       Response response = await _dio.get(myPointURL, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getMyPoint());
       }else{
@@ -97,7 +97,7 @@ class Repository{
       Response response = await _dio.get(getVoucherListURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getVoucherList(longitude: latitude, latitude: latitude, page: page, limit: limit, merchantId: merchantId));
       }else{
@@ -120,7 +120,7 @@ class Repository{
       Response response = await _dio.get(getVoucherDetailsURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getVoucherDetails(voucherId: voucherId));
       }else{
@@ -140,7 +140,7 @@ class Repository{
       Response response = await _dio.post(getPurchaseVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => purchaseVoucher(voucherId: voucherId, purchaseByCash: purchaseByCash, transactionId: transactionId, accountId: accountId, transactionDatetime: transactionDatetime, amount: amount));
       }else{
@@ -173,7 +173,7 @@ class Repository{
       Response response = await _dio.get(getPurchaseVoucherListURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getPurchaseVoucherList(merchantId: merchantId, page: page, limit: limit));
       }else{
@@ -195,7 +195,7 @@ class Repository{
       Response response = await _dio.get(getPurchaseVoucherDetailsURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => getPurchaseVoucherDetails(voucherCode: voucherCode));
       }else{
@@ -215,7 +215,7 @@ class Repository{
       Response response = await _dio.post(useVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => useVoucher(voucherCode: voucherCode));
       }else{
@@ -235,7 +235,7 @@ class Repository{
       Response response = await _dio.post(shareVoucherURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => shareVoucher(voucherCode: voucherCode, sendToMobileNumber: sendToMobileNumber));
       }else{
@@ -255,7 +255,7 @@ class Repository{
       Response response = await _dio.post(sharePointURL, data: body.toJson(), options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => sharePoints(businessId: businessId, sendToMobileNumber: sendToMobileNumber, keyword: keyword, transferAmount: transferAmount));
       }else{
@@ -279,7 +279,7 @@ class Repository{
       Response response = await _dio.get(pointExpenseHistoryURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => pointExpenseHistory(limit: limit, page: page));
       }else{
@@ -302,7 +302,7 @@ class Repository{
       Response response = await _dio.get(pointEarnHistoryURL, queryParameters: queryParameters, options: Options(headers: {'module': module, 'Authorization': "Bearer $accessToken"},));
       return response;
     }catch(e){
-      DioExceptions.fromDioError(dioError: e as DioError);
+      DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => pointEarnHistory(limit: limit, page: page));
       }else{
