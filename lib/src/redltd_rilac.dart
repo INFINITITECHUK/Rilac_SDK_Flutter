@@ -67,7 +67,7 @@ class RedltdRilac extends Functions{
     SharedPrefs.saveDeviceInfo(deviceOS: deviceOS, deviceBrand: deviceBrand, deviceModel: deviceModel, deviceId: uniqueId);
     // SharedPrefs.saveDeviceInfo(deviceOS: "q", deviceBrand: "q", deviceModel: "q", deviceId: "q");
 
-    LoginBodyModel bodyModel = LoginBodyModel(username: userName, password: userPassword, cusMobileno: customerMobileNumber, phoneOs: "q", phoneBrand: "q", deviceId: "q", phoneModel: "q");
+    LoginBodyModel bodyModel = LoginBodyModel(username: userName, password: userPassword, cusMobileno: customerMobileNumber, phoneOs: deviceOS, phoneBrand: deviceBrand, deviceId: deviceId, phoneModel: deviceModel);
     await _repository.login(body: bodyModel, baseUrl: baseURL, module: module);
   }
 
