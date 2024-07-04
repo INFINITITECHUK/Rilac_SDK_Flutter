@@ -1,7 +1,7 @@
 name: redltd_rilac
-description: A new Flutter plugin project.
+description: https://github.com/INFINITITECHUK/Rilac_SDK_Flutter.
 version: 0.0.1
-homepage: "redltd rilac"
+homepage: "https://github.com/INFINITITECHUK/Rilac_SDK_Flutter"
 
 environment:
   sdk: '>=2.19.3 <4.0.0'
