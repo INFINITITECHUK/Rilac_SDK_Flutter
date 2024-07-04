@@ -1,6 +1,6 @@
 # redltd_rilac
 
-A new Flutter plugin project.
+RilacPMS(Point Management System)
 
 ## Getting Started
 
@@ -10,6 +10,10 @@ import 'package:redltd_rilac/redltd_rilac.dart';
 
 RedltdRilac.config(baseURL: "http://3.18.0.201:9028/pmsasapi/", userName: "pmsdev", userPassword: "password1234", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "9849131399");
 ```
+
+## Example:
+[Demo example](https://github.com/INFINITITECHUK/Rilac_SDK_Flutter/blob/main/example/lib/main.dart)
+
 
 This project is a starting point for a Flutter
 [plug-in package](https://flutter.dev/developing-packages/),
