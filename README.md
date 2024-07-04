@@ -11,16 +11,16 @@ import 'package:redltd_rilac/redltd_rilac.dart';
 RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
 ```
 
-| Variable Name          | Description                                | Default Value      |
-|------------------      |--------------------------------------------|------------------- |
-| `baseURL`              | provide from service holder                | `localhost`        |
-| `userName`             | provide from service holder                | `your-userName`    |
-| `userPassword`         | provide from service holder                | `your-userPassword`|
-| `module`               | provide from service holder                | `your-api-key`     |
-| `customerMobileNumber` | Login User number                          | `your-loginNumber`|
+| Variable Name             | Description                   | Default Value       |
+|---------------------------|-------------------------------|---------------------|
+| `baseURL`                 | provide from service holder   | `localhost`         |
+| `userName`                | provide from service holder   | `your-userName`     |
+| `userPassword`            | provide from service holder   | `your-userPassword` |
+| `module`                  | provide from service holder   | `your-api-key`      |
+| `customerMobileNumber`    | Login User number             | `your-loginNumber`  |
 
 ## Device information
-### Note: using this code get device info
+### Note: using this code get to device info(if needed)
 ```dart
 import 'package:device_info_plus/device_info_plus.dart';
 
@@ -36,8 +36,8 @@ if (Platform.isAndroid) {
 
 String deviceOS = Platform.isAndroid ? androidInfo.version.release : iosInfo.systemVersion; 
 String deviceBrand = Platform.isAndroid ? androidInfo.brand : 'Apple'; 
-String deviceModel = Platform.isAndroid ? androidInfo.model : iosInfo.utsname.machine; 
-String? uniqueId = Platform.isAndroid ? androidInfo.id : iosInfo.identifierForVendor;
+String deviceModel = Platform.isAndroid ? androidInfo.model : iosInfo.utsname.machine;
+String uniqueId = Platform.isAndroid ? androidInfo.id : iosInfo.identifierForVendor ?? "";
 ```
 
 

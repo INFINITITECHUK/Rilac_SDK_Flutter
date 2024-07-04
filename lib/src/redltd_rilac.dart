@@ -62,12 +62,12 @@ class RedltdRilac extends Functions{
     String deviceOS = Platform.isAndroid ? androidInfo.version.release : iosInfo.systemVersion;
     String deviceBrand = Platform.isAndroid ? androidInfo.brand : 'Apple';
     String deviceModel = Platform.isAndroid ? androidInfo.model : iosInfo.utsname.machine;
-    String? uniqueId = Platform.isAndroid ? androidInfo.id : iosInfo.identifierForVendor;
+    String uniqueId = Platform.isAndroid ? androidInfo.id : iosInfo.identifierForVendor ?? "";
 
 
-    SharedPrefs.saveDeviceInfo(deviceOS: deviceOS, deviceBrand: deviceBrand, deviceModel: deviceModel, deviceId: uniqueId ?? "");
+    SharedPrefs.saveDeviceInfo(deviceOS: deviceOS, deviceBrand: deviceBrand, deviceModel: deviceModel, deviceId: uniqueId);
 
-    LoginBodyModel bodyModel = LoginBodyModel(username: userName, password: userPassword, cusMobileno: customerMobileNumber, phoneOs: deviceOS, phoneBrand: deviceBrand, deviceId: uniqueId ?? "", phoneModel: deviceModel);
+    LoginBodyModel bodyModel = LoginBodyModel(username: userName, password: userPassword, cusMobileno: customerMobileNumber, phoneOs: deviceOS, phoneBrand: deviceBrand, deviceId: uniqueId, phoneModel: deviceModel);
 
     await _repository.login(body: bodyModel, baseUrl: baseURL, module: module);
   }
