@@ -1,6 +1,6 @@
 name: redltd_rilac
 description: A Flutter plugin for the Rilac SDK.(https://redtechnologies.tech/).
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/INFINITITECHUK/Rilac_SDK_Flutter
 
 environment:
@@ -13,7 +13,7 @@ dependencies:
   plugin_platform_interface: any
   shared_preferences: any
   dio: any
-  device_info: any
+  device_info_plus: any
 
 dev_dependencies:
   flutter_test:
