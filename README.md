@@ -20,7 +20,7 @@ RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", cust
 | `customerMobileNumber`    | Login User number             | `your-loginNumber`  |
 
 ## Device information
-### Note: using this code get to device info(if needed)
+***Note: using this code get to device info(if needed)**
 ```dart
 import 'package:device_info_plus/device_info_plus.dart';
 
