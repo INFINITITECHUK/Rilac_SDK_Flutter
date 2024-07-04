@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    RedltdRilac.config(baseURL: "http://3.18.0.201:9028/pmsasapi/", userName: "pmsdev", userPassword: "password1234", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "9849131399");
+    RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
   }
 
   @override
