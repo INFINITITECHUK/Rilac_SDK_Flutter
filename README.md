@@ -19,6 +19,27 @@ RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", cust
 | `module`               | provide from service holder                | `your-api-key`     |
 | `customerMobileNumber` | Login User number                          | `your-loginNumber`|
 
+## Device information
+# Note: using this code get device info
+```dart
+import 'package:device_info_plus/device_info_plus.dart';
+
+DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+late AndroidDeviceInfo androidInfo; 
+late IosDeviceInfo iosInfo;
+    
+if (Platform.isAndroid) {   
+  androidInfo = await deviceInfo.androidInfo;
+} else if (Platform.isIOS) {   
+  iosInfo = await deviceInfo.iosInfo;
+}
+
+String deviceOS = Platform.isAndroid ? androidInfo.version.release : iosInfo.systemVersion; 
+String deviceBrand = Platform.isAndroid ? androidInfo.brand : 'Apple'; 
+String deviceModel = Platform.isAndroid ? androidInfo.model : iosInfo.utsname.machine; 
+String? uniqueId = Platform.isAndroid ? androidInfo.id : iosInfo.identifierForVendor;
+```
+
 
 ## Example:
 [Demo example](https://github.com/INFINITITECHUK/Rilac_SDK_Flutter/blob/main/example/lib/main.dart)
