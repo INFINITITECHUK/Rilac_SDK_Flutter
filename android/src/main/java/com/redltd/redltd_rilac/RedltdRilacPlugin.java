@@ -1,4 +1,4 @@
-package com.example.redltd_rilac;
+package com.redltd.redltd_rilac;
 
 import androidx.annotation.NonNull;
 

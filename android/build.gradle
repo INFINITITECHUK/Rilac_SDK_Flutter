@@ -1,4 +1,4 @@
-group 'com.example.redltd_rilac'
+group 'com.redltd.redltd_rilac'
 version '1.0'
 
 buildscript {

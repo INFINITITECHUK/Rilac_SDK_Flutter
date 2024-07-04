@@ -4,13 +4,13 @@ version: 0.0.1
 homepage: "redltd rilac"
 
 environment:
-  sdk: '>=2.19.3 <3.0.0'
+  sdk: '>=2.19.3 <4.0.0'
   flutter: ">=2.5.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
+  plugin_platform_interface: any
   shared_preferences: any
   dio: any
   device_info: any
@@ -18,7 +18,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -38,7 +38,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.redltd_rilac
+        package: com.redltd.redltd_rilac
         pluginClass: RedltdRilacPlugin
       ios:
         pluginClass: RedltdRilacPlugin
