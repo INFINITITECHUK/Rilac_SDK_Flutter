@@ -8,8 +8,17 @@ RilacPMS(Point Management System)
 ```dart
 import 'package:redltd_rilac/redltd_rilac.dart';
 
-RedltdRilac.config(baseURL: "http://3.18.0.201:9028/pmsasapi/", userName: "pmsdev", userPassword: "password1234", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "9849131399");
+RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
 ```
+
+| Variable Name          | Description                                | Default Value      |
+|------------------      |--------------------------------------------|------------------- |
+| `baseURL`              | provide from service holder                | `localhost`        |
+| `userName`             | provide from service holder                | `your-userName`    |
+| `userPassword`         | provide from service holder                | `your-userPassword`|
+| `module`               | provide from service holder                | `your-api-key`     |
+| `customerMobileNumber` | Login User number                          | `your-loginNumber,`|
+
 
 ## Example:
 [Demo example](https://github.com/INFINITITECHUK/Rilac_SDK_Flutter/blob/main/example/lib/main.dart)
