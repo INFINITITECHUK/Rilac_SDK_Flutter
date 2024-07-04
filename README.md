@@ -17,7 +17,7 @@ RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", cust
 | `userName`             | provide from service holder                | `your-userName`    |
 | `userPassword`         | provide from service holder                | `your-userPassword`|
 | `module`               | provide from service holder                | `your-api-key`     |
-| `customerMobileNumber` | Login User number                          | `your-loginNumber,`|
+| `customerMobileNumber` | Login User number                          | `your-loginNumber`|
 
 
 ## Example:
