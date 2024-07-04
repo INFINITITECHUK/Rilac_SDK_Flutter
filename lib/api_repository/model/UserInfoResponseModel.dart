@@ -1,7 +1,3 @@
-/// issuccess : true
-/// statusCode : 200
-/// payload : {"id":"9","email":"suj9763@gmail.com","mobile":"9849131399","firstname":"test","lastname":"test","pointBalance":0.0,"device_id":"q","access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkiLCJlbWFpbCI6InN1ajk3NjNAZ21haWwuY29tIiwibW9iaWxlIjoiOTg0OTEzMTM5OSIsImRldmljZV9pZCI6InEiLCJqdGkiOiIxNjc5ODk4MTY1OTM3X2NERmF3UUNPNm0iLCJpYXQiOjE2Nzk4OTgxNjUsImV4cCI6MTY4MDA3MDk2NX0.uIJcN9YKeTxsthjgg12fzbC0hXYEaIHadWXLYLXXG94","access_token_expires":"1680070965","refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkiLCJlbWFpbCI6InN1ajk3NjNAZ21haWwuY29tIiwibW9iaWxlIjoiOTg0OTEzMTM5OSIsImRldmljZV9pZCI6InEiLCJqdGkiOiIxNjc5ODk4MTY1OTM4XzZOODRhOTBCZzciLCJpYXQiOjE2Nzk4OTgxNjUsImV4cCI6MTY4NzY3NDE2NX0.j-dKyLyPnb7HcN4Cr3NDdYUWcFCjiCAi1s-Jj5sSVdA","refresh_token_expires":"1687674165"}
-/// message : "The request has succeeded"
 
 class UserInfoResponseModel {
   UserInfoResponseModel({

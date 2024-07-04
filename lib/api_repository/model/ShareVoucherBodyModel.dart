@@ -1,5 +1,3 @@
-/// voucher_code : "VP-0017"
-/// to_mobile_no : "1234567890"
 
 class ShareVoucherBodyModel {
   ShareVoucherBodyModel({

@@ -1,9 +1,4 @@
-/// voucherid : "PD00203"
-/// purchase_by_cash : true
-/// transectionid : "123"
-/// accountid : "1223"
-/// transection_datetime : "123"
-/// amount : 5
+
 
 class PurchaseVoucherBodyModel {
   PurchaseVoucherBodyModel({

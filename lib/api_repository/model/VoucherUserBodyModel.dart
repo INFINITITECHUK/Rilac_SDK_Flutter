@@ -1,4 +1,3 @@
-/// voucher_code : "VP-0014"
 
 class VoucherUserBodyModel {
   VoucherUserBodyModel({

@@ -1,7 +1,3 @@
-/// to_mobile_no : "01234567890"
-/// bussiness_id : "1677495583539"
-/// keyword : "C2MP"
-/// transfer_amount : 1
 
 class SharePointBodyModel {
   SharePointBodyModel({

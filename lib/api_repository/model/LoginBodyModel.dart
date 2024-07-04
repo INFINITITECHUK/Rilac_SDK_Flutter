@@ -1,10 +1,3 @@
-/// username : "pmsdev"
-/// password : "password1234"
-/// cus_mobileno : "9849131399"
-/// phone_os : "q"
-/// phone_brand : "q"
-/// device_id : "q"
-/// phone_model : "q"
 
 class LoginBodyModel {
   LoginBodyModel({

@@ -1,8 +1,3 @@
-/// refresh_token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkiLCJlbWFpbCI6InN1ajk3NjNAZ21haWwuY29tIiwibW9iaWxlIjoiOTg0OTEzMTM5OSIsImRldmljZV9pZCI6InEiLCJqdGkiOiIxNjc5ODk4MTY1OTM4XzZOODRhOTBCZzciLCJpYXQiOjE2Nzk4OTgxNjUsImV4cCI6MTY4NzY3NDE2NX0.j-dKyLyPnb7HcN4Cr3NDdYUWcFCjiCAi1s-Jj5sSVdA"
-/// phone_os : "q"
-/// phone_brand : "q"
-/// device_id : "q"
-/// phone_model : "q"
 
 class RefreshTokenBodyModel {
   RefreshTokenBodyModel({
