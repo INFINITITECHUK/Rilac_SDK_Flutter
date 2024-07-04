@@ -77,7 +77,7 @@ class RedltdRilac extends Functions{
 
 
   @override
-  Future<String> getProjectInfo() async {
+  Future<String> getDeviceInfo() async {
     var deviceId = await SharedPrefs.getDeviceId();
     var deviceBrand = await SharedPrefs.getDeviceBrand();
     var deviceOS = await SharedPrefs.getDeviceOS();

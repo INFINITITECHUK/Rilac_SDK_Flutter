@@ -2,7 +2,7 @@
 
 abstract class Functions{
 
-  Future<String> getProjectInfo();
+  Future<String> getDeviceInfo();
 
   Future<dynamic> getMyPoint();
 
