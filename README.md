@@ -14,6 +14,8 @@ RedltdRilac.config(baseURL: "http://3.18.0.201:9028/pmsasapi/", userName: "pmsde
 ## Example:
 [Demo example](https://github.com/INFINITITECHUK/Rilac_SDK_Flutter/blob/main/example/lib/main.dart)
 
+for more visit [Rilac Documentation](https://github.com/INFINITITECHUK/Rilac_SDK_Flutter/blob/main/RILAC%20SDK%20Documentation.pdf)
+
 
 This project is a starting point for a Flutter
 [plug-in package](https://flutter.dev/developing-packages/),
