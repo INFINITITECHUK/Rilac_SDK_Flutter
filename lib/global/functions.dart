@@ -26,6 +26,8 @@ abstract class Functions{
 
   Future<dynamic> pointEarnHistory({int limit = 0, int page = 0});
 
+  Future<dynamic> logout();
+
 }
 
 

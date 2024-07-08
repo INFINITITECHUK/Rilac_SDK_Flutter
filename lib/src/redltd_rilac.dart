@@ -224,6 +224,11 @@ class RedltdRilac extends Functions{
     return _repository.pointEarnHistory(limit: limit, page: page);
   }
 
+  @override
+  Future<void> logout() async{
+    await sharedPreference.clearSharedPreferences();
+  }
+
 
 
 }

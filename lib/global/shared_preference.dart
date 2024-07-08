@@ -115,6 +115,11 @@ class SharedPrefs {
   String get refreshToken => _sharedPrefs?.getString("rilac_refreshToken") ?? "";
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+  Future<void> clearSharedPreferences() async {
+    await _sharedPrefs?.clear();
+  }
+
+
 }
 
 final sharedPreference = SharedPrefs();
