@@ -37,9 +37,8 @@ class _MyAppState extends State<MyApp> {
         title: const Text('Plugin example app'),
       ),
 
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
+
         children: [
           Center(
             child: ElevatedButton(
@@ -223,6 +222,35 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Point Earn History'),
               onPressed: () async{
                 var data = await RedltdRilac().pointEarnHistory(limit: 100, page: 1);
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
+              },
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              child: const Text('Get location wise promotion'),
+              onPressed: () async{
+                var data = await RedltdRilac().getLocationWisePromotion(latitude: "1", longitude: "1", distance: 1000000000000000);
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
+              },
+            ),
+          ),
+
+          Center(
+            child: ElevatedButton(
+              child: const Text('Promotion'),
+              onPressed: () async{
+                var data = await RedltdRilac().promotion();
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");

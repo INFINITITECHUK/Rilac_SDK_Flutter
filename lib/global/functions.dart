@@ -26,6 +26,10 @@ abstract class Functions{
 
   Future<dynamic> pointEarnHistory({int limit = 0, int page = 0});
 
+  Future<dynamic> getLocationWisePromotion({required String longitude, required String latitude,required int distance});
+
+  Future<dynamic> promotion();
+
   Future<dynamic> logout();
 
 }

@@ -229,6 +229,16 @@ class RedltdRilac extends Functions{
     await sharedPreference.clearSharedPreferences();
   }
 
+  @override
+  Future getLocationWisePromotion({required String longitude, required String latitude, required int distance}) {
+    return _repository.getLocationWisePromotion(longitude: longitude, latitude: latitude, distance: distance);
+  }
+
+  @override
+  Future promotion() {
+    return _repository.promotion();
+  }
+
 
 
 }
