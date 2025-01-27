@@ -230,13 +230,13 @@ class RedltdRilac extends Functions{
   }
 
   @override
-  Future getLocationWisePromotion({required String longitude, required String latitude, required int distance}) {
-    return _repository.getLocationWisePromotion(longitude: longitude, latitude: latitude, distance: distance);
+  Future getLocationWisePromotion({required String longitude, required String latitude, required int distance, int page = 1, int limit = 20}) {
+    return _repository.getLocationWisePromotion(longitude: longitude, latitude: latitude, distance: distance, page: page, limit: limit);
   }
 
   @override
-  Future promotion() {
-    return _repository.promotion();
+  Future promotion({int page = 1, int limit = 20}) {
+    return _repository.promotion(page: page, limit: limit);
   }
 
 

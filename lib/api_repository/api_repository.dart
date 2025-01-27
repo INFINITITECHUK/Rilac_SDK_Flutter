@@ -310,7 +310,7 @@ class Repository{
     }
   }
 
-  Future<dynamic> getLocationWisePromotion({required String longitude, required String latitude, required int distance}) async {
+  Future<dynamic> getLocationWisePromotion({required String longitude, required String latitude, required int distance, int? page, int? limit}) async {
     try{
       var module = await SharedPrefs.getModule();
       // var accessToken = await SharedPrefs.getAccessToken();
@@ -322,7 +322,12 @@ class Repository{
         "distance" : distance,
       };
 
-      Response response = await _dio.post(getLocationWisePromotionURL, data: body,options: Options(headers: {'module': module},));
+      Map<String, dynamic> params = {
+        "page" : page,
+        "limit" : limit,
+      };
+
+      Response response = await _dio.post(getLocationWisePromotionURL,queryParameters: params, data: body,options: Options(headers: {'module': module},));
       return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioException);
@@ -334,13 +339,21 @@ class Repository{
     }
   }
 
-  Future<dynamic> promotion() async {
+  Future<dynamic> promotion({int? page, int? limit}) async {
     try{
       var module = await SharedPrefs.getModule();
       // var accessToken = await SharedPrefs.getAccessToken();
       module = module.isEmpty ? globalModule : module;
 
-      Response response = await _dio.get(promotionURL, options: Options(headers: {'module': module},));
+      Map<String, dynamic> params = {
+        "page" : page,
+        "limit" : limit,
+      };
+
+
+
+      Response response = await _dio.get(promotionURL, queryParameters: params, options: Options(headers: {'module': module},));
+      debugPrint("url $promotionURL params $params");
       return response;
     }catch(e){
       DioExceptions.fromDioError(dioError: e as DioException);

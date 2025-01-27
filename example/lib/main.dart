@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
+    RedltdRilac.config(baseURL: "http://finifyapi.redltd.tech:8000/", userName: "", userPassword: "", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "");
 
   }
 
@@ -235,7 +235,7 @@ class _MyAppState extends State<MyApp> {
             child: ElevatedButton(
               child: const Text('Get location wise promotion'),
               onPressed: () async{
-                var data = await RedltdRilac().getLocationWisePromotion(latitude: "1", longitude: "1", distance: 1000000000000000);
+                var data = await RedltdRilac().getLocationWisePromotion(latitude: "1", longitude: "1", distance: 1000000000000000, page: 1, limit: 20);
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");
@@ -250,7 +250,7 @@ class _MyAppState extends State<MyApp> {
             child: ElevatedButton(
               child: const Text('Promotion'),
               onPressed: () async{
-                var data = await RedltdRilac().promotion();
+                var data = await RedltdRilac().promotion(page: 1, limit: 20);
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");
