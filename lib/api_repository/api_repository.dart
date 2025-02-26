@@ -339,15 +339,16 @@ class Repository{
     }
   }
 
-  Future<dynamic> promotion({int? page, int? limit}) async {
+  Future<dynamic> promotion({int? page, int? limit, int? businessId}) async {
     try{
       var module = await SharedPrefs.getModule();
       // var accessToken = await SharedPrefs.getAccessToken();
       module = module.isEmpty ? globalModule : module;
 
       Map<String, dynamic> params = {
-        "page" : page,
-        "limit" : limit,
+        // "page" : page,
+        // "limit" : limit,
+        "business_id": businessId
       };
 
 

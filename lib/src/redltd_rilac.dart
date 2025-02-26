@@ -235,8 +235,8 @@ class RedltdRilac extends Functions{
   }
 
   @override
-  Future promotion({int page = 1, int limit = 20}) {
-    return _repository.promotion(page: page, limit: limit);
+  Future promotion({int page = 1, int limit = 20, int? businessId}) {
+    return _repository.promotion(page: page, limit: limit, businessId: businessId);
   }
 
 
