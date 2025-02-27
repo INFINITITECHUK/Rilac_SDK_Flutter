@@ -224,21 +224,43 @@ class RedltdRilac extends Functions{
     return _repository.pointEarnHistory(limit: limit, page: page);
   }
 
-  @override
-  Future<void> logout() async{
-    await sharedPreference.clearSharedPreferences();
-  }
+  /// Retrieves location-based promotions within a specified distance.
+  ///
+  /// This function fetches promotions that are within a specified distance from
+  /// a given longitude and latitude, allowing for pagination through the [page] and [limit] parameters.
+  ///
+  /// [longitude] - The longitude of the center point from which to calculate distances.
+  /// [latitude] - The latitude of the center point from which to calculate distances.
+  /// [distance] - The radius (in kilometers) within which to search for promotions.
+  /// [page] - Specifies the page number of the results to be retrieved (default is 1).
+  /// [limit] - Specifies the number of promotion entries per page (default is 20).
 
   @override
   Future getLocationWisePromotion({required String longitude, required String latitude, required int distance, int page = 1, int limit = 20}) {
     return _repository.getLocationWisePromotion(longitude: longitude, latitude: latitude, distance: distance, page: page, limit: limit);
   }
 
+  /// Retrieves promotion details optionally filtered by a business identifier.
+  ///
+  /// This function fetches promotion details from the repository, allowing
+  /// for pagination through the [page] and [limit] parameters. Optionally,
+  /// promotions can be filtered by a specific business if [businessId] is provided.
+  ///
+  /// [page] - Specifies the page number of the promotion details to be retrieved (default is 1).
+  /// [limit] - Specifies the number of promotion entries per page (default is 20).
+  /// [businessId] - The identifier of the business to filter promotions (optional).
+  ///
+  /// Returns a Future that completes with the list of promotions.
+
   @override
   Future promotion({int page = 1, int limit = 20, int? businessId}) {
     return _repository.promotion(page: page, limit: limit, businessId: businessId);
   }
 
+  @override
+  Future<void> logout() async{
+    await sharedPreference.clearSharedPreferences();
+  }
 
 
 }
