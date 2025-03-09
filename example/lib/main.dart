@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
+    RedltdRilac.config(baseURL: "http://digi.redltd.tech:4050/pmsasapi/", userName: "pmsdev", userPassword: "password1234", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "8801630337757");
 
   }
 
