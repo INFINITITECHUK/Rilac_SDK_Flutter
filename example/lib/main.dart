@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -27,7 +26,8 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    RedltdRilac.config(baseURL: "http://digi.redltd.tech:4050/pmsasapi/", userName: "pmsdev", userPassword: "password1234", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "8801630337757");
+    // RedltdRilac.config(baseURL: "http://finifyapi.redltd.tech:8000/", userName: "", userPassword: "", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "");
+    RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
 
   }
 
@@ -38,9 +38,8 @@ class _MyAppState extends State<MyApp> {
         title: const Text('Plugin example app'),
       ),
 
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
+
         children: [
           Center(
             child: ElevatedButton(
@@ -224,6 +223,35 @@ class _MyAppState extends State<MyApp> {
               child: const Text('Point Earn History'),
               onPressed: () async{
                 var data = await RedltdRilac().pointEarnHistory(limit: 100, page: 1);
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
+              },
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              child: const Text('Get location wise promotion'),
+              onPressed: () async{
+                var data = await RedltdRilac().getLocationWisePromotion(latitude: "1", longitude: "1", distance: 1000000000000000, page: 1, limit: 20);
+                Map<String, dynamic> jsonMap = json.decode(data.toString());
+                if(jsonMap["issuccess"]){
+                  debugPrint("success response ${data.toString()}");
+                }else{
+                  debugPrint("error response ${data.toString()}");
+                }
+              },
+            ),
+          ),
+
+          Center(
+            child: ElevatedButton(
+              child: const Text('Promotion'),
+              onPressed: () async{
+                var data = await RedltdRilac().promotion(page: 1, limit: 20, businessId: 13);
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");

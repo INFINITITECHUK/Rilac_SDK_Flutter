@@ -106,7 +106,6 @@ class Repository{
     }
   }
 
-
   Future<dynamic> getVoucherDetails({required String voucherId}) async {
     try{
       var module = await SharedPrefs.getModule();
@@ -305,6 +304,62 @@ class Repository{
       DioExceptions.fromDioError(dioError: e as DioException);
       if(e.response?.statusCode! == 401){
         return DioExceptions.unauthorized(() => pointEarnHistory(limit: limit, page: page));
+      }else{
+        return e.response;
+      }
+    }
+  }
+
+  Future<dynamic> getLocationWisePromotion({required String longitude, required String latitude, required int distance, int? page, int? limit}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      // var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      Map<String, dynamic>? body = {
+        "long" : longitude,
+        "lat" : latitude,
+        "distance" : distance,
+      };
+
+      Map<String, dynamic> params = {
+        "page" : page,
+        "limit" : limit,
+      };
+
+      Response response = await _dio.post(getLocationWisePromotionURL,queryParameters: params, data: body,options: Options(headers: {'module': module},));
+      return response;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioException);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => getLocationWisePromotion(longitude: latitude, latitude: latitude, distance: distance));
+      }else{
+        return e.response;
+      }
+    }
+  }
+
+  Future<dynamic> promotion({int? page, int? limit, int? businessId}) async {
+    try{
+      var module = await SharedPrefs.getModule();
+      // var accessToken = await SharedPrefs.getAccessToken();
+      module = module.isEmpty ? globalModule : module;
+
+      Map<String, dynamic> params = {
+        // "page" : page,
+        // "limit" : limit,
+        "business_id": businessId
+      };
+
+
+
+      Response response = await _dio.get(promotionURL, queryParameters: params, options: Options(headers: {'module': module},));
+      debugPrint("url $promotionURL params $params");
+      return response;
+    }catch(e){
+      DioExceptions.fromDioError(dioError: e as DioException);
+      if(e.response?.statusCode! == 401){
+        return DioExceptions.unauthorized(() => promotion());
       }else{
         return e.response;
       }

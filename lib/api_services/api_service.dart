@@ -17,3 +17,8 @@ String shareVoucherURL = "${baseURL}voucher/v1/share";
 String sharePointURL = "${baseURL}point/v1/pointTransfer";
 String pointExpenseHistoryURL = "${baseURL}point/v1/point-expence-history";
 String pointEarnHistoryURL = "${baseURL}point/v1/point-earn-history";
+
+/// promotion
+
+String getLocationWisePromotionURL = "${baseURL}rasapi/promotion/getlocationwisepromotion";
+String promotionURL = "${baseURL}rasapi/promotion";
