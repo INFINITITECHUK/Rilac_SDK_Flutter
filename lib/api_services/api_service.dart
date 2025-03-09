@@ -20,5 +20,5 @@ String pointEarnHistoryURL = "${baseURL}point/v1/point-earn-history";
 
 /// promotion
 
-String getLocationWisePromotionURL = "${baseURL}rasapi/promotion/getlocationwisepromotion";
-String promotionURL = "${baseURL}rasapi/promotion";
+String getLocationWisePromotionURL = "${baseURL}promotion/getlocationwisepromotion";
+String promotionURL = "${baseURL}promotion";

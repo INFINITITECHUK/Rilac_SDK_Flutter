@@ -21,17 +21,17 @@ class DioExceptions implements Exception {
         message = "connectionError";
         break;
       case DioExceptionType.badResponse:
-        message = _handleError(dioError.response!.statusCode!, dioError.response!.data);
+        message = _handleError(dioError.response?.statusCode, dioError.response?.data);
         break;
       default:
-        message = _handleError(dioError.response!.statusCode!, dioError.response!.data);
+        message = _handleError(dioError.response?.statusCode, dioError.response?.data);
         break;
     }
   }
 
   String message='';
 
-  String _handleError(int statusCode, dynamic errorData) {
+  String _handleError(int? statusCode, dynamic errorData) {
 
     if (errorData is Map<String, dynamic>) {
       if (errorData.containsKey('message')) {

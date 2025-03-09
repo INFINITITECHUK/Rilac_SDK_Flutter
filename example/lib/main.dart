@@ -26,8 +26,8 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    // RedltdRilac.config(baseURL: "http://finifyapi.redltd.tech:8000/", userName: "", userPassword: "", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "");
-    RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
+    RedltdRilac.config(baseURL: "http://finifyapi.redltd.tech:8000/pmsasapi/", userName: "pmsdev", userPassword: "password1234", module: "JW9tc0ByZWRsdGQl", customerMobileNumber: "1148207711");
+    // RedltdRilac.config(baseURL: "", userName: "", userPassword: "", module: "", customerMobileNumber: "");
 
   }
 
@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
             child: ElevatedButton(
               child: const Text('Get voucher details'),
               onPressed: () async{
-                var data = await RedltdRilac().getVoucherDetails(voucherId: "PD00205");
+                var data = await RedltdRilac().getVoucherDetails(voucherId: "PD0086");
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");
@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
             child: ElevatedButton(
               child: const Text('Purchase voucher'),
               onPressed: () async{
-                var data = await RedltdRilac().purchaseVoucher(voucherId: "PD00203", purchaseByCash: false);
+                var data = await RedltdRilac().purchaseVoucher(voucherId: "PD0086", purchaseByCash: false);
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");
@@ -130,7 +130,7 @@ class _MyAppState extends State<MyApp> {
             child: ElevatedButton(
               child: const Text('Get purchase voucher details'),
               onPressed: () async{
-                var data = await RedltdRilac().getPurchaseVoucherDetails(voucherCode: "VP-0019");
+                var data = await RedltdRilac().getPurchaseVoucherDetails(voucherCode: "VP-0203");
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");
@@ -147,7 +147,7 @@ class _MyAppState extends State<MyApp> {
             child: ElevatedButton(
               child: const Text('Use voucher'),
               onPressed: () async{
-                var data = await RedltdRilac().useVoucher(voucherCode: "VP-0019");
+                var data = await RedltdRilac().useVoucher(voucherCode: "VP-0203");
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");
@@ -164,7 +164,7 @@ class _MyAppState extends State<MyApp> {
             child: ElevatedButton(
               child: const Text('Share voucher'),
               onPressed: () async{
-                var data = await RedltdRilac().giftVoucher(voucherCode: "VP-0018", sendToMobileNumber: "1234567890");
+                var data = await RedltdRilac().giftVoucher(voucherCode: "VP-0203", sendToMobileNumber: "1234567890");
                 Map<String, dynamic> jsonMap = json.decode(data.toString());
                 if(jsonMap["issuccess"]){
                   debugPrint("success response ${data.toString()}");
